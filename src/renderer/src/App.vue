@@ -450,6 +450,14 @@ const dialogFormVisible = ref(false);
 
 <template>
   <div id="page">
+    <div style="font-size: 24px;font-weight: 500;display: flex;justify-content: center;margin-bottom: 5px;">
+      <span v-if="context.globalStatus == 0">进程状态转换与进程调度</span>
+      <span v-else>
+        <span v-if="context.globalStatus != 0">{{ schedulingAlgorithms[selectedSchedulingAlgorithIndex].name
+        }}</span>
+        <span v-show="context.globalStatus != 0" style="margin-left: 10px;">{{ context.passTime }}秒</span>
+      </span>
+    </div>
     <!-- 头部 -->
     <div style="font-size: 24px;font-weight: 500;display: flex;justify-content: center;">
       <!-- <el-select v-show="context.globalStatus != 0" style="font-size: 30px;" v-model="selectedSchedulingAlgorithIndex"
@@ -458,8 +466,7 @@ const dialogFormVisible = ref(false);
           :disabled="(selectedSchedulingAlgorithIndex == 4 && index != 4) || (selectedSchedulingAlgorithIndex != 4 && index == 4)"
           :key="item.name" :label="item.name" :value="index" />
       </el-select> -->
-      <span v-if="context.globalStatus != 0">{{ schedulingAlgorithms[selectedSchedulingAlgorithIndex].name }}</span>
-      <span v-show="context.globalStatus != 0" style="margin-left: 10px;">{{ context.passTime }}秒</span>
+
       <span style="margin-left:10px;">
         <el-button type="primary" style="font-size: 20px;"
           @click="selectedSchedulingAlgorithIndex = 0; dialogFormVisible = true" v-if="context.globalStatus == 0">
