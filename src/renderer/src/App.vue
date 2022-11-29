@@ -957,6 +957,7 @@ const dialogFormVisible = ref(false);
                   <td>{{ item.arriveTime }}</td>
                   <td>{{ item.serviceTime }}</td>
                   <td>{{ item.useCPUTime }}</td>
+                  <td>{{ item.waitTime }}</td>
                   <td>{{ item.waitTime + item.serviceTime }}</td>
                 </tr>
               </tbody>
